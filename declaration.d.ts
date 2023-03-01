@@ -1,5 +1,5 @@
-declare module '*.png';
-declare module '*.jpg';
+// declare module '*.png';
+// declare module '*.jpg';
 
 namespace NodeJS {
   interface ProcessEnv {
