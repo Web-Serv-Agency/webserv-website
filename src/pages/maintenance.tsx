@@ -1,7 +1,7 @@
-import SEO from "@/components/common/SEO";
-import Image from "next/image";
-import { Box, Link, Stack, Typography } from "@mui/material";
 import logo_bg from "@/assets/images/logo-with-bg.png";
+import SEO from "@/components/common/SEO";
+import { Box, Link, Stack, Typography } from "@mui/material";
+import Image from "next/image";
 
 export default function maintenance() {
   return (
@@ -12,16 +12,15 @@ export default function maintenance() {
         alignItems="center"
         justifyContent="center"
         spacing={5}
-        sx={{ minHeight: "100vh", px: { xs: 2, md: 10 } }}
+        sx={{
+          minHeight: "100vh",
+          backgroundColor: "dark.main",
+          color: "textColor.main",
+          px: { xs: 2, md: 10 },
+        }}
       >
         <Box width="100%" sx={{ textAlign: "center" }}>
-          <Image
-            src={logo_bg}
-            alt="maintenance"
-            priority
-            width={500}
-            height={500}
-          />
+          <Image src={logo_bg} alt="maintenance" priority width={500} height={500} />
         </Box>
 
         <Box>
@@ -29,8 +28,7 @@ export default function maintenance() {
             Site Under Maintenance
           </Typography>
           <Typography variant="body2">
-            Sorry for the inconvenience but we&rsquo;re performing some
-            maintenance at the moment. If you need to you can always{" "}
+            Sorry for the inconvenience but we&rsquo;re performing some maintenance at the moment. If you need to you can always{" "}
             <Link
               href="mailto:webserv23@gmail.com"
               target="_blank"

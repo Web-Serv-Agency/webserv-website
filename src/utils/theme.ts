@@ -18,8 +18,8 @@ const theme = createTheme({
     dark: {
       main: "#181F29",
     },
-    textColorForBgSecondary: {
-      main: "#FFFFFF",
+    textColor: {
+      main: "#eee",
       lightWhite: "#E1D9D1",
     },
   },
