@@ -12,7 +12,12 @@ export default function maintenance() {
         alignItems="center"
         justifyContent="center"
         spacing={5}
-        sx={{ minHeight: "100vh", px: { xs: 2, md: 10 } }}
+        sx={{
+          minHeight: "100vh",
+          backgroundColor: "dark.main",
+          color: "textColor.main",
+          px: { xs: 2, md: 10 },
+        }}
       >
         <Box width="100%" sx={{ textAlign: "center" }}>
           <Image

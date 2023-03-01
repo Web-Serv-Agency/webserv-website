@@ -5,6 +5,7 @@
   --secondary: #B60766;
   --third: #C45211;
   --dark: #181F29;
+  --text-light: #eee;
 }
 
 * {
@@ -26,8 +27,8 @@ body {
 body {
   min-height: 100vh;
   font-family: 'Poppins', sans-serif;
-  color: #eee;
-  background-color: var(--dark);
+  /* color: #eee; */
+  /* background-color: var(--dark); */
 }
 
 a {
