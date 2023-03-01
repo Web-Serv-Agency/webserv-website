@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const connection : any = {};
+const connection: any = {};
 
 const connectDB = async () => {
   if (connection.isConnected) {
@@ -14,10 +14,7 @@ const connectDB = async () => {
     }
     await mongoose.disconnect();
   }
-  const db = await mongoose.connect(process.env.DB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+  const db = await mongoose.connect(process.env.DB_URI);
   connection.isConnected = db.connections[0].readyState;
   process.env.NODE_ENV === "production" || console.log("Database connection successful");
 };
@@ -34,4 +31,3 @@ const disconnectDB = async () => {
 };
 
 export { connectDB, disconnectDB };
-
