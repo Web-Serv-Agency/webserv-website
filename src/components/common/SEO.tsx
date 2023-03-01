@@ -2,7 +2,7 @@ import Head from "next/head";
 
 function SEO({
   title = "Web Serv | Developer Agency",
-  description = "web serv - a web development service provider agency",
+  description = "Turning your ideas into reality through technology",
 }) {
   return (
     <Head>
