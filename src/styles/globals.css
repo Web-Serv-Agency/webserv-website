@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --primary: #00C4D8;
+  --primary: #2196f3;
+  --primary-light: "#64b5f6";
+  --primary-dark: "#1565c0";
   --secondary: #B60766;
   --third: #C45211;
   --dark: #181F29;
+  --dark-light: #1B4667;
   --text-light: #eee;
 }
 
@@ -27,8 +30,6 @@ body {
 body {
   min-height: 100vh;
   font-family: 'Poppins', sans-serif;
-  /* color: #eee; */
-  /* background-color: var(--dark); */
 }
 
 a {
