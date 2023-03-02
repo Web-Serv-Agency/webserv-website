@@ -1,26 +1,20 @@
-import React from "react";
-import { Typography, Box } from "@mui/material";
 import logo from "@/assets/images/logo.png";
+import { Box, Typography } from "@mui/material";
 import Image from "next/image";
+import BtnPrimary from "../button/BtnPrimary";
+import BtnOutlined from "../button/BtnOutlined";
+import Banner from "./Banner";
 
 const Home = () => {
   return (
     <>
       <Box
         sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-          gap: 5,
           minHeight: "100vh",
-          backgroundColor: "dark.main",
+          bgcolor: "white",
         }}
       >
-        <Image src={logo} alt="webserv" width={150} height={100} />
-        <Typography variant="h2" sx={{ color: "primary.main" }}>
-          Welcome to Web Serv
-        </Typography>
+        <Banner />
       </Box>
     </>
   );
