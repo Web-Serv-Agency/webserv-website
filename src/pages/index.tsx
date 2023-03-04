@@ -4,9 +4,9 @@ import { useRouter } from "next/router";
 
 export default function Index() {
   const router = useRouter();
-  useEffect(() => {
-    router.push("/maintenance");
-  }, [router]);
+  // useEffect(() => {
+  //   router.push("/maintenance");
+  // }, [router]);
 
   return (
     <>
