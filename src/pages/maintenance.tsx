@@ -28,7 +28,6 @@ export default function maintenance() {
             height={500}
           />
         </Box>
-
         <Box>
           <Typography variant="h3" sx={{ color: "primary.main", mb: 2 }}>
             Site Under Maintenance
