@@ -1,7 +1,15 @@
+import { Poppins } from "next/font/google";
 import { createTheme } from "@mui/material";
 
 // const preferMode = useMediaQuery("(prefers-color-scheme: dark)");
 // console.log(preferMode);
+
+export const poppins = Poppins({
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+  display: "swap",
+  fallback: ["Helvetica", "Arial", "sans-serif"],
+});
 
 const theme = createTheme({
   palette: {
@@ -25,6 +33,9 @@ const theme = createTheme({
     text: {
       primary: "#eee",
     },
+  },
+  typography: {
+    fontFamily: poppins.style.fontFamily,
   },
 });
 
