@@ -1,6 +1,5 @@
 import { Poppins } from "next/font/google";
 import { createTheme } from "@mui/material";
-import { blue } from "@mui/material/colors";
 
 // const preferMode = useMediaQuery("(prefers-color-scheme: dark)");
 // console.log(preferMode);
