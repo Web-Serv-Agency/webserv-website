@@ -1,5 +1,4 @@
 import { createTheme } from "@mui/material";
-import { blue } from "@mui/material/colors";
 
 // const preferMode = useMediaQuery("(prefers-color-scheme: dark)");
 // console.log(preferMode);
@@ -21,7 +20,7 @@ const theme = createTheme({
     },
     dark: {
       main: "#181F29",
-      light: "#1B4667"
+      light: "#1B4667",
     },
     text: {
       primary: "#eee",
