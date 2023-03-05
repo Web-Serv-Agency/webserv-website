@@ -1,8 +1,8 @@
-import { Button } from "@mui/material";
+import { Button, ButtonProps } from "@mui/material";
 import styles from "./button.module.css";
 import { ReactNode } from "react";
 
-export default function BtnOutlined({ children }: { children: ReactNode }) {
+export default function BtnOutlined({ children }: ButtonProps) {
   return (
     <Button
       className={styles.btnOutlined}

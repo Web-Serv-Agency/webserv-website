@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import store, { persistor } from "@/utils/store";
+import store, { persistor } from "@/utils/store.js";
 import theme from "@/utils/theme";
 import { ThemeProvider } from "@mui/material";
 import type { AppProps } from "next/app";
@@ -13,10 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
       {/* Default Head */}
       <Head>
         <title>Web Serv | Developer Agency</title>
-        <meta
-          name="description"
-          content="web serv - a web development service provider agency"
-        />
+        <meta name="description" content="web serv - a web development service provider agency" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
