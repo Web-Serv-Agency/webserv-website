@@ -1,11 +1,6 @@
 import "@/styles/globals.css";
-<<<<<<< HEAD
-import store, { persistor } from "@/utils/store.js";
-import theme from "@/utils/theme";
-=======
 import store, { persistor } from "@/utils/store";
 import theme, { poppins } from "@/utils/theme";
->>>>>>> dcc86ea2975fded175baabe6b0a3bded86d227ab
 import { ThemeProvider } from "@mui/material";
 import { Box } from "@mui/system";
 import type { AppProps } from "next/app";
