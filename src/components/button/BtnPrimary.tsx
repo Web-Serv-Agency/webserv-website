@@ -1,8 +1,12 @@
 import { Button, ButtonProps } from "@mui/material";
 import styles from "./button.module.css";
-import { ReactNode } from "react";
 
-export default function BtnPrimary({ children, disabled=false, onClick, title } : ButtonProps) {
+export default function BtnPrimary({
+  children,
+  disabled = false,
+  onClick,
+  title,
+}: ButtonProps) {
   return (
     <Button
       className={styles.btnPrimary}
@@ -11,7 +15,7 @@ export default function BtnPrimary({ children, disabled=false, onClick, title } 
       sx={{
         bgcolor: "primary.main",
         color: "text.primary",
-        display: "flex",
+        // display: "flex",
         alignItems: "center",
         justifyContent: "center",
         gap: 1,

@@ -1,7 +1,12 @@
 import { Button, ButtonProps } from "@mui/material";
 import styles from "./button.module.css";
 
-export default function BtnOutlined({ children, disabled=false, onClick, title } : ButtonProps) {
+export default function BtnOutlined({
+  children,
+  disabled = false,
+  onClick,
+  title,
+}: ButtonProps) {
   return (
     <Button
       className={styles.btnOutlined}
@@ -9,7 +14,7 @@ export default function BtnOutlined({ children, disabled=false, onClick, title }
       color="primary"
       sx={{
         color: "primary.main",
-        display: "flex",
+        // display: "flex",
         alignItems: "center",
         justifyContent: "center",
         gap: 1,
