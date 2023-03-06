@@ -1,8 +1,8 @@
-import { Button } from "@mui/material";
+import { Button, ButtonProps } from "@mui/material";
 import styles from "./button.module.css";
 import { ReactNode } from "react";
 
-export default function BtnPrimary({ children }: { children: ReactNode }) {
+export default function BtnPrimary({ children, disabled=false, onClick, title } : ButtonProps) {
   return (
     <Button
       className={styles.btnPrimary}
@@ -19,8 +19,9 @@ export default function BtnPrimary({ children }: { children: ReactNode }) {
         py: 1,
       }}
       disableRipple
-      // disabled={disabled}
-      // onClick={onClick}
+      disabled={disabled}
+      onClick={onClick}
+      title={title}
     >
       {children}
     </Button>

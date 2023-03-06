@@ -1,7 +1,7 @@
-import { Box, Stack, Typography, Container, useTheme } from "@mui/material";
-import BtnOutlined from "../button/BtnOutlined";
 import banner from "@/assets/images/banner.png";
+import { Box, Container, Stack, Typography, useTheme } from "@mui/material";
 import Image from "next/image";
+import BtnOutlined from "../button/BtnOutlined";
 import styles from "./home.module.css";
 
 export default function Banner() {

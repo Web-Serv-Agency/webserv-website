@@ -1,8 +1,7 @@
-import { Button } from "@mui/material";
+import { Button, ButtonProps } from "@mui/material";
 import styles from "./button.module.css";
-import { ReactNode } from "react";
 
-export default function BtnOutlined({ children }: { children: ReactNode }) {
+export default function BtnOutlined({ children, disabled=false, onClick, title } : ButtonProps) {
   return (
     <Button
       className={styles.btnOutlined}
@@ -22,8 +21,9 @@ export default function BtnOutlined({ children }: { children: ReactNode }) {
         },
       }}
       disableRipple
-      // disabled={disabled}
-      // onClick={onClick}
+      disabled={disabled}
+      onClick={onClick}
+      title={title}
     >
       {children}
     </Button>
