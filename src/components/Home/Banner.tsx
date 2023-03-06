@@ -1,7 +1,7 @@
-import { Box, Stack, Typography, Container, useTheme } from "@mui/material";
-import BtnOutlined from "../button/BtnOutlined";
 import banner from "@/assets/images/banner.png";
+import { Box, Container, Stack, Typography, useTheme } from "@mui/material";
 import Image from "next/image";
+import BtnOutlined from "../button/BtnOutlined";
 import styles from "./home.module.css";
 
 export default function Banner() {
@@ -11,7 +11,7 @@ export default function Banner() {
       <Box
         className={styles.banner_bg}
         sx={{
-          minHeight: "110vh",
+          minHeight: { xs: "100vh", md: "110vh" },
           // background: `linear-gradient(45deg, ${theme.palette.primary.dark} 0%, ${theme.palette.primary.main} 50%, ${theme.palette.primary.light} 100%)`,
           color: "text.primary",
           display: "grid",
@@ -28,7 +28,12 @@ export default function Banner() {
             sx={{ pb: { xs: 20, md: 8 }, zIndex: 10, position: "relative" }}
           >
             {/* Left Side/Banner Text */}
-            <Box sx={{ width: { xs: "100%", md: "50%" } }}>
+            <Box
+              sx={{
+                width: { xs: "100%", md: "50%" },
+                textAlign: { xs: "center", md: "left" },
+              }}
+            >
               <Typography
                 variant="h1"
                 sx={{ fontWeight: 600, fontSize: { xs: 40, md: 55 } }}
@@ -45,11 +50,19 @@ export default function Banner() {
                 illum qui dolorem eum fugiat quo voluptas nulla.
               </Typography>
 
-              <BtnOutlined>Learn More</BtnOutlined>
+              <BtnOutlined>
+                <span>Learn More</span>
+              </BtnOutlined>
             </Box>
 
             {/* Right Side/Banner Image */}
-            <Box sx={{ width: { xs: "100%", md: "50%", textAlign: "center" } }}>
+            <Box
+              sx={{
+                display: { xs: "none", md: "block" },
+                width: { xs: "100%", md: "50%" },
+                textAlign: "center",
+              }}
+            >
               <Image src={banner} alt="banner" width={500} height={450} />
             </Box>
           </Stack>
