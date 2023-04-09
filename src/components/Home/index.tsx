@@ -1,10 +1,6 @@
-import logo from "@/assets/images/logo.png";
-import { Box, Typography } from "@mui/material";
-import Image from "next/image";
-import BtnPrimary from "../button/BtnPrimary";
-import BtnOutlined from "../button/BtnOutlined";
+import { Box } from "@mui/material";
 import Banner from "./Banner";
-import Testimonials from "./Testimonials";
+import Services from "./Services";
 
 const Home = () => {
   return (
@@ -16,8 +12,8 @@ const Home = () => {
         }}
       >
         <Banner />
+        <Services />
       </Box>
-      {/* <Testimonials/> */}
     </>
   );
 };
