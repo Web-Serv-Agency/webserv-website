@@ -7,7 +7,8 @@ export default function Services() {
       <Box
         sx={{
           minHeight: "100vh",
-          bgcolor: "#F3F5FF",
+          // bgcolor: "#F3F5FF",
+          bgcolor: "background.primary",
         }}
       >
         <Container maxWidth="lg">

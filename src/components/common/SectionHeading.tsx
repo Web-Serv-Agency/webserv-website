@@ -27,7 +27,7 @@ export default function SectionHeading({
             fontWeight: 500,
             fontSize: 35,
             letterSpacing: 1.2,
-            color: "black",
+            color: "text.primary",
           }}
         >
           {heading}
@@ -40,6 +40,7 @@ export default function SectionHeading({
               fontWeight: 400,
               lineHeight: 1.4,
               maxWidth: { xs: "100%", md: "60%" },
+              color: "text.primary",
             }}
           >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
