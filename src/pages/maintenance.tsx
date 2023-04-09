@@ -14,7 +14,7 @@ export default function maintenance() {
         spacing={5}
         sx={{
           minHeight: "100vh",
-          bgcolor: "dark.main",
+          bgcolor: "background.primary",
           color: "text.primary",
           px: { xs: 2, md: 10 },
         }}

@@ -1,11 +1,14 @@
 import banner from "@/assets/images/banner.png";
+import useThemeMode from "@/hooks/useThemeMode";
 import { Box, Container, Stack, Typography, useTheme } from "@mui/material";
 import Image from "next/image";
 import BtnOutlined from "../button/BtnOutlined";
 import styles from "./home.module.css";
 
 export default function Banner() {
+  const { themeMode, toggleThemeMode } = useThemeMode();
   const theme = useTheme();
+  console.log(themeMode, theme.palette.mode);
   return (
     <>
       <Box
@@ -13,6 +16,7 @@ export default function Banner() {
         sx={{
           minHeight: { xs: "100vh", md: "110vh" },
           // background: `linear-gradient(45deg, ${theme.palette.primary.dark} 0%, ${theme.palette.primary.main} 50%, ${theme.palette.primary.light} 100%)`,
+          bgcolor: "background.secondary",
           color: "text.primary",
           display: "grid",
           placeItems: "center",
@@ -50,7 +54,7 @@ export default function Banner() {
                 illum qui dolorem eum fugiat quo voluptas nulla.
               </Typography>
 
-              <BtnOutlined>
+              <BtnOutlined onClick={toggleThemeMode}>
                 <span>Learn More</span>
               </BtnOutlined>
             </Box>
