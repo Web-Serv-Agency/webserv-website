@@ -1,3 +1,4 @@
+import themeReducer from "@/features/theme/themeSlice";
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import {
@@ -13,7 +14,15 @@ import {
 import storage from "redux-persist/lib/storage";
 import apiBase from "./apiBase";
 
+export interface RootState {
+  theme: ReturnType<typeof themeReducer>;
+  // ------------ Add New Reducer here ------------
+}
+
 const reducer = combineReducers({
+  theme: themeReducer,
+  
+  // ------------ Add New Reducer here ------------
   [apiBase.reducerPath]: apiBase.reducer,
 });
 const persistConfig = {

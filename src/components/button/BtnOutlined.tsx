@@ -6,6 +6,7 @@ export default function BtnOutlined({
   disabled = false,
   onClick,
   title,
+  sx,
 }: ButtonProps) {
   return (
     <Button
@@ -13,6 +14,7 @@ export default function BtnOutlined({
       variant="outlined"
       color="primary"
       sx={{
+        ...sx,
         color: "primary.main",
         // display: "flex",
         alignItems: "center",
