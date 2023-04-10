@@ -6,6 +6,7 @@ export default function BtnPrimary({
   disabled = false,
   onClick,
   title,
+  sx
 }: ButtonProps) {
   return (
     <Button
@@ -13,8 +14,9 @@ export default function BtnPrimary({
       variant="contained"
       color="primary"
       sx={{
+        ...sx,
         bgcolor: "primary.main",
-        color: "text.primary",
+        color: "white",
         // display: "flex",
         alignItems: "center",
         justifyContent: "center",
