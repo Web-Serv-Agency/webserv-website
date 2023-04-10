@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import Banner from "./Banner";
 import Services from "./Services";
+import NavBar from "../navbar";
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
           bgcolor: "white",
         }}
       >
+        <NavBar />
         <Banner />
         <Services />
       </Box>

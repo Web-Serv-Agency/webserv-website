@@ -1,27 +1,29 @@
-import { useMediaQuery } from "@mui/material";
-import { useCallback, useState } from "react";
+import { toggleThemeMode as toggleMode } from "@/features/theme/themeSlice";
+import { RootState } from "@/utils/store";
+import { useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function useThemeMode() {
+  const dispatch = useDispatch();
+  const { themeMode } = useSelector((state: RootState) => state.theme);
+
   // Get Device Default Theme Mode
-  const deviceMode: Boolean = useMediaQuery("(prefers-color-scheme: dark)");
+  // const deviceMode: "light" | "dark" = useMediaQuery(
+  //   "(prefers-color-scheme: dark)"
+  // )
+  //   ? "dark"
+  //   : "light";
 
-  // ------------ Get Local User Theme Mode ------------
-  // const prevMode : string | null = localStorage.getItem("themeMode")
-  //   ? JSON.parse(localStorage.getItem("themeMode"))
-  //   : "";
+  // const defaultMode: "light" | "dark" = theme.themeMode
+  //   ? theme.themeMode
+  //   : deviceMode;
 
-  // Set Default Theme Mode to Device Default or previous
-  // Original Logic will be ==== prevMode ? prevMode : deviceMode ? "dark" : "light"
-  const [themeMode, setThemeMode] = useState<"light" | "dark">(
-    deviceMode ? "dark" : "light"
-  );
+  // const [themeMode, setThemeMode] = useState<"light" | "dark">(defaultMode);
 
   // Change Theme Mode
   const toggleThemeMode = useCallback(() => {
-    const newMode = themeMode === "light" ? "dark" : "light";
-    setThemeMode(newMode);
-    localStorage.setItem("themeMode", JSON.stringify(newMode));
-  }, [themeMode]);
+    dispatch(toggleMode());
+  }, [dispatch]);
 
   return { themeMode, toggleThemeMode };
 }
