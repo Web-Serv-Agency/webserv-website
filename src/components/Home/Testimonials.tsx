@@ -12,26 +12,34 @@ type Props = {};
 
 const data = [
   {
+    _id: 1,
     name: "John Doe",
     image: "https://via.placeholder.com/150",
+    rating: 4.5,
     quote:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget felis ullamcorper, bibendum felis vel, congue sem. Fusce auctor nisi eu nunc commodo, sit amet interdum sapien.",
   },
   {
+    _id: 2,
     name: "Ben Smith",
     image: "https://via.placeholder.com/150",
+    rating: 4.5,
     quote:
       "Sed pellentesque eleifend velit quis rutrum. Pellentesque sit amet ultricies nisl. Praesent dignissim massa vel euismod dignissim. Proin lacinia suscipit nisl, non finibus risus semper id.",
   },
   {
+    _id: 3,
     name: "Mr. Bean",
     image: "https://via.placeholder.com/150",
+    rating: 4.5,
     quote:
       "Sed pellentesque eleifend velit quis rutrum. Pellentesque sit amet ultricies nisl. Praesent dignissim massa vel euismod dignissim. Proin lacinia suscipit nisl, non finibus risus semper id.",
   },
   {
-    name: "Jhonny sins",
+    _id: 4,
+    name: "Afia",
     image: "https://via.placeholder.com/150",
+    rating: 4.5,
     quote:
       "Sed pellentesque eleifend velit quis rutrum. Pellentesque sit amet ultricies nisl. Praesent dignissim massa vel euismod dignissim. Proin lacinia suscipit nisl, non finibus risus semper id.",
   },
@@ -46,10 +54,10 @@ export default function Testimonials({}: Props) {
         color="primary"
         onClick={onClick}
         sx={{
-         display: "grid",
-         placeItems: "center",
+          display: "grid",
+          placeItems: "center",
           color: "primary.light",
-          bgcolor: "white",
+          bgcolor: "background.primary",
           position: "absolute",
           top: -30,
           right: 50,
@@ -70,10 +78,10 @@ export default function Testimonials({}: Props) {
         color="primary"
         onClick={onClick}
         sx={{
-         display: "grid",
-         placeItems: "center",
+          display: "grid",
+          placeItems: "center",
           color: "primary.light",
-          bgcolor: "white",
+          bgcolor: "background.primary",
           position: "absolute",
           top: -30,
           right: 0,
@@ -87,19 +95,25 @@ export default function Testimonials({}: Props) {
   };
 
   const settings = {
-    className: "center",
-    centerPadding: "60px",
-    dots: false,
+    dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    swipeToSlide: true,
     autoplay: true,
-    autoplaySpeed: 5000,
     cssEase: "linear",
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: { slidesToShow: 2 },
+      },
+      {
+        breakpoint: 768,
+        settings: { slidesToShow: 1 },
+      },
+    ],
   };
   return (
     <SectionWrapper bgColor="secondary">
@@ -116,14 +130,14 @@ export default function Testimonials({}: Props) {
             width: 300,
             height: 2,
             bgcolor: "divider",
-            my: 3,
+            mb: 3,
             ml: "auto",
             mr: 13,
           }}
         />
         <Slider {...settings}>
-          {data.map((testimonial, index) => (
-            <Box key={index} sx={{ textAlign: "left", px: 1.5 }}>
+          {data.map((testimonial) => (
+            <Box key={testimonial._id} sx={{ textAlign: "left", px: 1.5 }}>
               <Box
                 sx={{ p: 2.5, bgcolor: "background.primary", borderRadius: 3 }}
               >
