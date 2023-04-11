@@ -10,9 +10,5 @@ export default function Index() {
     }
   }, [router]);
 
-  return (
-    <>
-      <Home />
-    </>
-  );
+  return <Home />;
 }
