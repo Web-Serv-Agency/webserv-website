@@ -3,6 +3,8 @@ import NavBar from "../navbar";
 import Banner from "./Banner";
 import Facts from "./Facts";
 import Services from "./Services";
+import Testimonials from "./Testimonials";
+import Teams from "./Teams";
 
 const Home = () => {
   return (
@@ -17,6 +19,8 @@ const Home = () => {
         <Banner />
         <Services />
         <Facts />
+        <Teams />
+        <Testimonials />
       </Box>
     </>
   );
