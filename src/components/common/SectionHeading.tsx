@@ -9,7 +9,7 @@ export default function SectionHeading({ heading = "Section Header", description
         alignItems={{ xs: "center", md: position === "center" ? "center" : "flex-start" }}
         justifyContent={{ xs: "center", md: "flex-start" }}
         spacing={0.5}
-        sx={{ pt: 8, pb: 6, color: "text.primary", ...sx }}
+        sx={{ pt: 4, pb: 4, color: "text.primary", ...sx }}
       >
         <Box component="div" sx={{ width: 40, height: 3.5, bgcolor: "primary.main" }} />
         <Typography
@@ -17,7 +17,7 @@ export default function SectionHeading({ heading = "Section Header", description
           sx={{
             display: "block",
             fontWeight: 500,
-            fontSize: 35,
+            fontSize: 30,
             letterSpacing: 1.2,
             color: "inherit",
           }}

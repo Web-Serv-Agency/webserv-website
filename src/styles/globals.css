@@ -42,3 +42,36 @@ button {
   border: none;
   outline: none;
 }
+
+/* slider dot control */
+.slick-slider {
+  padding-bottom: 40px;
+}
+
+ul.slick-dots {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+ul.slick-dots::before {
+  content: "";
+  height: 20px;
+  width: 120px;
+  background-color: var(--primary);
+  border-radius: 10px;
+  margin-right: -120px;
+}
+
+.slick-dots li button::before {
+  width: 10px;
+  color: white !important;
+  opacity: 1 !important;
+}
+
+.slick-dots li.slick-active button {
+  margin-top: 5px;
+  border-radius: 5px;
+  height: 10px;
+  background-color: white;
+}
