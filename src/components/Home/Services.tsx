@@ -4,7 +4,7 @@ import SectionWrapper from "../common/SectionWrapper";
 export default function Services() {
   return (
     <>
-      <SectionWrapper bgColor="primary">
+      <SectionWrapper bgColor="secondary">
         <SectionHeading
           heading="Our Services"
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
