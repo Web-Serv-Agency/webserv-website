@@ -124,9 +124,9 @@ export default function palette(themeMode: "light" | "dark") {
       disabled: GREY[500],
     },
     background: { 
-      paper: "#F3F5FF",
-      primary: "#F3F5FF",
-      secondary: "#fff",
+      paper: "#fff",
+      primary: "#fff",
+      secondary: "#F3F5FF",
       neutral: GREY[200]
     },
     action: {
@@ -146,7 +146,8 @@ export default function palette(themeMode: "light" | "dark") {
     background: {
       paper: "#181F29",
       primary: "#181F29",
-      secondary: "#1B4667",
+      secondary: "#29324A",
+      // secondary: "#1B4667",
       // paper: GREY[800],
       // default: GREY[900],
       neutral: alpha(GREY[500], 0.16),

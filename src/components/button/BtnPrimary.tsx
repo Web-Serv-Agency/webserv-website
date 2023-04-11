@@ -7,7 +7,7 @@ export default function BtnPrimary({
   onClick,
   title,
   sx
-}: ButtonProps) {
+}: ButtonProps  ) {
   return (
     <Button
       className={styles.btnPrimary}

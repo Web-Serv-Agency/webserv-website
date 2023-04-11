@@ -1,20 +1,17 @@
-import { Box, Container } from "@mui/material";
 import SectionHeading from "../common/SectionHeading";
+import SectionWrapper from "../common/SectionWrapper";
 
 export default function Services() {
   return (
     <>
-      <Box
-        sx={{
-          minHeight: "100vh",
-          // bgcolor: "#F3F5FF",
-          bgcolor: "background.primary",
-        }}
-      >
-        <Container maxWidth="lg">
-          <SectionHeading heading="Our Services" />
-        </Container>
-      </Box>
+      <SectionWrapper bgColor="secondary">
+        <SectionHeading
+          heading="Our Services"
+          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
+            incidunt rerum dolores pariatur. Odio, id. Iure commodi, similique."
+          position="left"
+        />
+      </SectionWrapper>
     </>
   );
 }

@@ -1,7 +1,11 @@
 import { Box } from "@mui/material";
-import Banner from "./Banner";
-import Services from "./Services";
 import NavBar from "../navbar";
+import Banner from "./Banner";
+import ChooseUs from "./ChooseUs";
+import Facts from "./Facts";
+import Services from "./Services";
+import Teams from "./Teams";
+import Testimonials from "./Testimonials";
 
 const Home = () => {
   return (
@@ -14,7 +18,11 @@ const Home = () => {
       >
         <NavBar />
         <Banner />
+        <ChooseUs />
         <Services />
+        <Facts />
+        <Teams />
+        <Testimonials />
       </Box>
     </>
   );
