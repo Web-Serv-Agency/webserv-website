@@ -13,10 +13,9 @@ export default function Banner() {
   return (
     <>
       <SectionWrapper
-        bgColor="transparent"
+        bgColor="primary"
         sx={{
           minHeight: { xs: "100vh", md: "110vh" },
-          bgcolor: `${theme.palette.mode === "dark" ? "background.primary" : "background.secondary"}`,
           color: "white",
           display: "grid",
           placeItems: "center",
