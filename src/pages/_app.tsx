@@ -1,12 +1,11 @@
 import "@/styles/globals.css";
 import store, { persistor } from "@/utils/store";
 import ThemeProvider from "@/utils/theme";
+import { AnimatePresence } from "framer-motion";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-import "slick-carousel/slick/slick-theme.css";
-import "slick-carousel/slick/slick.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -14,10 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
       {/* Default Head */}
       <Head>
         <title>Web Serv | Developer Agency</title>
-        <meta
-          name="description"
-          content="web serv - a web development service provider agency"
-        />
+        <meta name="description" content="web serv - a web development service provider agency" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -26,7 +22,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <ThemeProvider>
-            <Component {...pageProps} />
+            <AnimatePresence>
+              <Component {...pageProps} />
+            </AnimatePresence>
           </ThemeProvider>
         </PersistGate>
       </Provider>
