@@ -95,7 +95,7 @@ export default function Testimonials({}: Props) {
   };
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     autoplay: true,
@@ -123,6 +123,7 @@ export default function Testimonials({}: Props) {
             incidunt rerum dolores pariatur. Odio, id. Iure commodi, similique."
         position="center"
       />
+
       <Box sx={{ py: 6, position: "relative" }}>
         <Box
           component="div"
@@ -138,22 +139,10 @@ export default function Testimonials({}: Props) {
         <Slider {...settings}>
           {data.map((testimonial) => (
             <Box key={testimonial._id} sx={{ textAlign: "left", px: 1.5 }}>
-              <Box
-                sx={{ p: 2.5, bgcolor: "background.primary", borderRadius: 3 }}
-              >
-                <Box
-                  component={Image}
-                  src={logo}
-                  alt={testimonial.name}
-                  width={100}
-                  height={100}
-                  sx={{ display: "block" }}
-                />
+              <Box sx={{ p: 2.5, bgcolor: "background.primary", borderRadius: 3 }}>
+                <Box component={Image} src={logo} alt={testimonial.name} width={100} height={100} sx={{ display: "block" }} />
 
-                <Typography
-                  variant="subtitle1"
-                  sx={{ mt: 3, fontSize: "18px", color: "text.primary" }}
-                >
+                <Typography variant="subtitle1" sx={{ mt: 3, fontSize: "18px", color: "text.primary" }}>
                   {testimonial.name}
                 </Typography>
 

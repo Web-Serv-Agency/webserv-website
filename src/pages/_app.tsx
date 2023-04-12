@@ -1,15 +1,12 @@
-import Loading from "@/components/common/Loading";
+import { store } from "@/features/app/store";
 import "@/styles/globals.css";
-import store, { persistor } from "@/utils/store";
 import ThemeProvider from "@/utils/theme";
+import { AnimatePresence } from "framer-motion";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import Router from "next/router";
 import { useEffect, useState } from "react";
 import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
-import "slick-carousel/slick/slick-theme.css";
-import "slick-carousel/slick/slick.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [loading, setLoading] = useState(false);
@@ -43,11 +40,11 @@ export default function App({ Component, pageProps }: AppProps) {
 
       {/* Providers */}
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <ThemeProvider>
-            {loading ? <Loading /> : <Component {...pageProps} />}
-          </ThemeProvider>
-        </PersistGate>
+        <ThemeProvider>
+          <AnimatePresence>
+            <Component {...pageProps} />
+          </AnimatePresence>
+        </ThemeProvider>
       </Provider>
     </>
   );
