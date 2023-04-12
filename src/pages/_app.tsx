@@ -1,11 +1,10 @@
+import { store } from "@/features/app/store";
 import "@/styles/globals.css";
-import store, { persistor } from "@/utils/store";
 import ThemeProvider from "@/utils/theme";
 import { AnimatePresence } from "framer-motion";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -20,13 +19,11 @@ export default function App({ Component, pageProps }: AppProps) {
 
       {/* Providers */}
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <ThemeProvider>
-            <AnimatePresence>
-              <Component {...pageProps} />
-            </AnimatePresence>
-          </ThemeProvider>
-        </PersistGate>
+        <ThemeProvider>
+          <AnimatePresence>
+            <Component {...pageProps} />
+          </AnimatePresence>
+        </ThemeProvider>
       </Provider>
     </>
   );

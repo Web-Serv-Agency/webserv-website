@@ -1,5 +1,5 @@
 import { FactsInterface } from "@/utils/interface/FactsInterface";
-import { Box, Card, Grid, Stack } from "@mui/material";
+import { Box, Card, Grid } from "@mui/material";
 import { FaUserFriends } from "react-icons/fa";
 import CountUpAnimation from "../common/CountUp";
 import SectionHeading from "../common/SectionHeading";
@@ -44,10 +44,10 @@ const Facts = () => {
         {facts.map((fact) => (
           <Grid key={fact.id} item xs={12} sm={6} md={3}>
             <Card sx={{ p: 4, bgcolor: "background.secondary" }}>
-              <Stack direction="column" spacing={5}>
-                <Box style={{ fontSize: "5rem" }}>{fact.icon}</Box>
-              </Stack>
-              <CountUpAnimation end={fact.count} suffix="+"/> 
+              <Box sx={{ fontSize: "5rem" }}>{fact.icon}</Box>
+              <Box style={{ fontSize: "2rem" }}>
+                <CountUpAnimation end={fact.count} suffix="+" />
+              </Box>
             </Card>
           </Grid>
         ))}

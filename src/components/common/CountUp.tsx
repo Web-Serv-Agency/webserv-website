@@ -27,7 +27,7 @@ const CountUpAnimation = ({ end, suffix, prefix }: CountUpAnimationProps) => {
         <motion.span
           style={{ display: "flex", alignItems: "center" }}
           key={count}
-          initial={{ y: "100%" }}
+          initial={{ y: "20%" }}
           animate={{ y: 0 }}
           transition={{ type: "spring", stiffness: 500, damping: 30 }}
         >

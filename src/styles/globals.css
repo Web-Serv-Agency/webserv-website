@@ -46,8 +46,8 @@ button {
 /* slick styles */
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
-
-/* slider dot control */
+/* 
+slider dot control
 .slick-slider {
   padding-bottom: 40px;
 }
@@ -78,4 +78,4 @@ ul.slick-dots::before {
   border-radius: 5px;
   height: 10px;
   background-color: white;
-}
+} */
