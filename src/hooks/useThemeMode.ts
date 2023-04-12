@@ -1,11 +1,10 @@
+import { useDispatch, useSelector } from "@/features/app/store";
 import { toggleThemeMode as toggleMode } from "@/features/theme/themeSlice";
-import { RootState } from "@/utils/store";
 import { useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 export default function useThemeMode() {
   const dispatch = useDispatch();
-  const { themeMode } = useSelector((state: RootState) => state.theme);
+  const { themeMode } = useSelector((state) => state.theme);
 
   // Get Device Default Theme Mode
   // const deviceMode: "light" | "dark" = useMediaQuery(
