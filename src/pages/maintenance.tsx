@@ -40,7 +40,7 @@ export default function maintenance() {
               target="_blank"
               rel="noopener noreferrer"
               sx={{
-                color: "third.main",
+                color: "primary.light",
                 textDecoration: "none",
                 "&:hover": { textDecoration: "underline" },
               }}
