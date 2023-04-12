@@ -1,6 +1,7 @@
 import { FactsInterface } from "@/utils/interface/FactsInterface";
 import { Box, Card, Grid, Stack } from "@mui/material";
 import { FaUserFriends } from "react-icons/fa";
+import CountUpAnimation from "../common/CountUp";
 import SectionHeading from "../common/SectionHeading";
 import SectionWrapper from "../common/SectionWrapper";
 
@@ -8,7 +9,7 @@ const facts: FactsInterface[] = [
   {
     id: 1,
     title: "Happy Clients",
-    count: 1000,
+    count: 5,
     icon: <FaUserFriends />,
   },
   {
@@ -20,13 +21,13 @@ const facts: FactsInterface[] = [
   {
     id: 3,
     title: "Happy Clients",
-    count: 1000,
+    count: 15,
     icon: <FaUserFriends />,
   },
   {
     id: 4,
     title: "Happy Clients",
-    count: 1000,
+    count: 8000,
     icon: <FaUserFriends />,
   },
 ];
@@ -46,6 +47,7 @@ const Facts = () => {
               <Stack direction="column" spacing={5}>
                 <Box style={{ fontSize: "5rem" }}>{fact.icon}</Box>
               </Stack>
+              <CountUpAnimation end={fact.count} suffix="+"/> 
             </Card>
           </Grid>
         ))}
