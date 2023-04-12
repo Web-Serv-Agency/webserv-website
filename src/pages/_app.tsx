@@ -1,3 +1,4 @@
+import Loading from "@/components/common/Loading";
 import { store } from "@/features/app/store";
 import "@/styles/globals.css";
 import ThemeProvider from "@/utils/theme";
@@ -42,7 +43,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Provider store={store}>
         <ThemeProvider>
           <AnimatePresence>
-            <Component {...pageProps} />
+            {loading ? <Loading/> : <Component {...pageProps} />}
           </AnimatePresence>
         </ThemeProvider>
       </Provider>

@@ -17,18 +17,21 @@ export const createNoopStorage = () => ({
   },
 });
 
-export const storage = typeof window !== "undefined" ? createWebStorage("local") : createNoopStorage();
+export const storage =
+  typeof window !== "undefined"
+    ? createWebStorage("local")
+    : createNoopStorage();
 
 export const rootPersistConfig = {
   key: "webserv",
   storage,
-  keyPrefix: "web-serv",
-  whitelist: [],
+  keyPrefix: "catch-",
+  whitelist: ["theme"],
 };
 
 const rootReducer = combineReducers({
-  [apiBase.reducerPath]: apiBase.reducer,
   theme: themeReducer,
+  [apiBase.reducerPath]: apiBase.reducer,
 });
 
 export default rootReducer;
