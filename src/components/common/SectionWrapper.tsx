@@ -12,6 +12,7 @@ const SectionWrapper = ({ children, bgColor = "primary", container = true, sx }:
     <Box
       sx={{
         minHeight: "100vh",
+        py: 4,
         background: bgColor === "gradient" ? linearGradient : "transparent",
         bgcolor: bgColor === "primary" ? "background.primary" :  bgColor === "secondary" ? "background.secondary" : "inherit",
         ...sx,
