@@ -9,3 +9,4 @@ namespace NodeJS {
 }
 
 declare module 'framer-motion'
+declare module "@mui/styles"
