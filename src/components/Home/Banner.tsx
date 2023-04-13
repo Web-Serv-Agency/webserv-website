@@ -72,7 +72,7 @@ export default function Banner() {
               textAlign: "center",
             }}
           >
-            <Image src={banner} alt="banner" width={500} height={450} />
+            <Image src={banner} alt="banner" width={500} height={450} priority />
           </Box>
         </Stack>
       </SectionWrapper>
