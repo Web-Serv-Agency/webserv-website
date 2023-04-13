@@ -1,13 +1,12 @@
 import RouteChangeWrapper from "@/components/common/RouteChangeWrapper";
-import { store } from "@/features/app/store";
+import { wrapper } from "@/features/app/store";
 import "@/styles/globals.css";
 import ThemeProvider from "@/utils/theme";
 import { AnimatePresence } from "framer-motion";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { Provider } from "react-redux";
 
-export default function App({ Component, pageProps }: AppProps) {
+const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       {/* Default Head */}
@@ -17,17 +16,16 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       {/* Providers */}
-      <Provider store={store}>
-        <ThemeProvider>
-          <AnimatePresence>
-            <RouteChangeWrapper>
-              <Component {...pageProps} />
-            </RouteChangeWrapper>
-          </AnimatePresence>
-        </ThemeProvider>
-      </Provider>
+      <ThemeProvider>
+        <AnimatePresence>
+          <RouteChangeWrapper>
+            <Component {...pageProps} />
+          </RouteChangeWrapper>
+        </AnimatePresence>
+      </ThemeProvider>
     </>
   );
-}
+};
+
+export default wrapper.withRedux(App);
