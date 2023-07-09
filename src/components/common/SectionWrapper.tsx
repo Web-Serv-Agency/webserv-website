@@ -1,7 +1,12 @@
 import { SectionWrapperProps } from "@/utils/interface/componetsProps/SectionWrapper";
 import { Box, Container, useTheme } from "@mui/material";
 
-const SectionWrapper = ({ children, bgColor = "primary", container = true, sx }: SectionWrapperProps) => {
+const SectionWrapper = ({
+  children,
+  bgColor = "primary",
+  container = true,
+  sx,
+}: SectionWrapperProps) => {
   const theme = useTheme();
   const linearGradient: string =
     theme.palette.mode === "dark"
@@ -11,10 +16,15 @@ const SectionWrapper = ({ children, bgColor = "primary", container = true, sx }:
   return (
     <Box
       sx={{
-        minHeight: "100vh",
+        minHeight: { xs: "100vh", lg: "70vh" },
         py: 4,
         background: bgColor === "gradient" ? linearGradient : "transparent",
-        bgcolor: bgColor === "primary" ? "background.primary" :  bgColor === "secondary" ? "background.secondary" : "inherit",
+        bgcolor:
+          bgColor === "primary"
+            ? "background.primary"
+            : bgColor === "secondary"
+            ? "background.secondary"
+            : "inherit",
         ...sx,
       }}
     >
