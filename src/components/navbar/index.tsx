@@ -116,7 +116,10 @@ const NavBar = () => {
             transition: "0.5s ease",
             boxShadow: scrolled ? "inherit" : "none",
             border: "none",
-            backgroundColor: scrolled ? "rgba(24, 31, 41, 0.6)" : "transparent",
+            backgroundColor:
+              scrolled || router.pathname !== "/"
+                ? "rgba(24, 31, 41, 0.6)"
+                : "transparent",
             backdropFilter: scrolled ? "blur(10px) brightness(0.8)" : "none",
           }}
         >
@@ -241,7 +244,7 @@ const NavBar = () => {
           sx={{
             width: 300,
             height: "100vh",
-            bgcolor: "background.primary"
+            bgcolor: "background.primary",
           }}
         >
           <MuiLink
