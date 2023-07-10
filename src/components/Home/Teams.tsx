@@ -11,43 +11,45 @@ import { makeStyles } from "@mui/styles";
 import SectionHeading from "../common/SectionHeading";
 import SectionWrapper from "../common/SectionWrapper";
 
+import authApi from "@/utils/authApi";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { FaFacebookF, FaGoogle, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 
 type Props = {};
 
-const data = [
-  {
-    id: 1,
-    name: "Mohammad Ali",
-    designation: "CO-Founder",
-    img: "https://res.cloudinary.com/webserv/image/upload/v1681331248/team/IMG_5282_cropped_tllx4v.jpg",
-    facebook: "https://www.facebook.com/itsproali",
-    twitter: "https://twitter.com/itsproali",
-    linkedin: "https://linkedin.com/in/itsproali",
-    email: "itsproali@gmail.com",
-  },
-  {
-    id: 2,
-    name: "Akram Sakib",
-    designation: "CO-Founder",
-    img: "https://res.cloudinary.com/webserv/image/upload/v1681332526/team/sakib_sa3rxi.jpg",
-    facebook: "https://www.facebook.com/akramSakibA",
-    twitter: "https://twitter.com/AkramSakib4",
-    linkedin: "https://linkedin.com/in/akram-sakib",
-    email: "sayedakramsakib@gmail.com",
-  },
-  {
-    id: 3,
-    name: "Sheikh Siam",
-    designation: "CO-Founder",
-    img: "https://res.cloudinary.com/webserv/image/upload/v1681332526/team/siam_jyf5qv.jpg",
-    facebook: "https://www.facebook.com/checkiamsiam",
-    twitter: "https://twitter.com/checkiamsiam",
-    linkedin: "https://linkedin.com/in/checkiamsiam",
-    email: "issiam02415@gmail.com",
-  },
-];
+// const data = [
+//   {
+//     id: 1,
+//     name: "Mohammad Ali",
+//     designation: "CO-Founder",
+//     img: "https://res.cloudinary.com/webserv/image/upload/v1681331248/team/IMG_5282_cropped_tllx4v.jpg",
+//     facebook: "https://www.facebook.com/itsproali",
+//     twitter: "https://twitter.com/itsproali",
+//     linkedin: "https://linkedin.com/in/itsproali",
+//     email: "itsproali@gmail.com",
+//   },
+//   {
+//     id: 2,
+//     name: "Akram Sakib",
+//     designation: "CO-Founder",
+//     img: "https://res.cloudinary.com/webserv/image/upload/v1681332526/team/sakib_sa3rxi.jpg",
+//     facebook: "https://www.facebook.com/akramSakibA",
+//     twitter: "https://twitter.com/AkramSakib4",
+//     linkedin: "https://linkedin.com/in/akram-sakib",
+//     email: "sayedakramsakib@gmail.com",
+//   },
+//   {
+//     id: 3,
+//     name: "Sheikh Siam",
+//     designation: "CO-Founder",
+//     img: "https://res.cloudinary.com/webserv/image/upload/v1681332526/team/siam_jyf5qv.jpg",
+//     facebook: "https://www.facebook.com/checkiamsiam",
+//     twitter: "https://twitter.com/checkiamsiam",
+//     linkedin: "https://linkedin.com/in/checkiamsiam",
+//     email: "issiam02415@gmail.com",
+//   },
+// ];
 
 const useStyles = makeStyles((theme: Theme) => ({
   card: {
@@ -76,6 +78,21 @@ const useStyles = makeStyles((theme: Theme) => ({
 export default function Teams({}: Props) {
   const theme = useTheme();
   const styles = useStyles();
+  const [teamMembers, setTeamMembers] = useState([]);
+
+  const fetchTeamMembers = async () => {
+    try {
+      const { data } = await authApi.get("/api/team");
+      if (data?.success) {
+        setTeamMembers(data?.data);
+      }
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  };
+  useEffect(() => {
+    fetchTeamMembers();
+  }, []);
 
   const linearGradient: string = `linear-gradient(45deg,  #1565c0, #64b5f6  )`;
   return (
@@ -87,9 +104,9 @@ export default function Teams({}: Props) {
         position="left"
       />
 
-      <Grid container spacing={{ xs: 3, md: 8 }} sx={{my: 6}}>
-        {data.map((item) => (
-          <Grid item xs={12} sm={6} lg={4} key={item.id}>
+      <Grid container spacing={{ xs: 3, md: 8 }} sx={{ my: 6 }}>
+        {teamMembers.map((item: any) => (
+          <Grid item xs={12} sm={6} lg={4} key={item._id}>
             <Box
               className={styles.card}
               sx={{
