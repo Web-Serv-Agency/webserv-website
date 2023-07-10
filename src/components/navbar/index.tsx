@@ -8,6 +8,7 @@ import logoMini from "@/assets/images/logo.png";
 import useThemeMode from "@/hooks/useThemeMode";
 import {
   AppBar,
+  Avatar,
   Box,
   Button,
   Container,
@@ -23,6 +24,7 @@ import {
   useScrollTrigger,
 } from "@mui/material";
 
+import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { BsFillMoonFill, BsSunFill } from "react-icons/bs";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
@@ -56,6 +58,7 @@ const NavBar = () => {
   const { themeMode, toggleThemeMode } = useThemeMode();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { data: session } = useSession();
   const router = useRouter();
 
   const isActive = (href: string) => {
@@ -200,11 +203,21 @@ const NavBar = () => {
                   </IconButton>
                 )}
 
-                <BtnPrimary
-                  sx={{ px: 4, display: { xs: "none", md: "block" } }}
-                >
-                  Login
-                </BtnPrimary>
+                {session?.user ? (
+                  <IconButton>
+                    <Avatar
+                      alt={session?.user?.name}
+                      sx={{ width: 40, height: 40 }}
+                    />
+                  </IconButton>
+                ) : (
+                  <BtnPrimary
+                    sx={{ px: 4, display: { xs: "none", md: "block" } }}
+                    onClick={() => router.push("/login")}
+                  >
+                    Login
+                  </BtnPrimary>
+                )}
 
                 <IconButton
                   edge="end"
@@ -269,7 +282,10 @@ const NavBar = () => {
             ))}
           </List>
           <Stack direction="row" justifyContent="center">
-            <BtnPrimary sx={{ px: 4, mx: "auto", width: "95%" }}>
+            <BtnPrimary
+              sx={{ px: 4, mx: "auto", width: "95%" }}
+              onClick={() => router.push("/login")}
+            >
               Login
             </BtnPrimary>
           </Stack>

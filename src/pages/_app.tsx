@@ -3,6 +3,7 @@ import { wrapper } from "@/features/app/store";
 import "@/styles/globals.css";
 import ThemeProvider from "@/utils/theme";
 import { AnimatePresence } from "framer-motion";
+import { SessionProvider } from "next-auth/react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { Provider } from "react-redux";
@@ -24,13 +25,15 @@ const App = ({ Component, ...rest }: AppProps) => {
 
       {/* Providers */}
       <Provider store={store}>
-        <ThemeProvider>
-          <AnimatePresence>
-            <RouteChangeWrapper>
-              <Component {...props.pageProps} />
-            </RouteChangeWrapper>
-          </AnimatePresence>
-        </ThemeProvider>
+        <SessionProvider session={props.session}>
+          <ThemeProvider>
+            <AnimatePresence>
+              <RouteChangeWrapper>
+                <Component {...props.pageProps} />
+              </RouteChangeWrapper>
+            </AnimatePresence>
+          </ThemeProvider>
+        </SessionProvider>
       </Provider>
     </>
   );
