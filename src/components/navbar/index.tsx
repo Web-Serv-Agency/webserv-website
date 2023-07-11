@@ -3,19 +3,12 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 import logo from "@/assets/images/logo-with-name.png";
-import logoMini from "@/assets/images/logo.png";
 
 import useThemeMode from "@/hooks/useThemeMode";
 import {
   AppBar,
-  Box,
-  Button,
   Container,
-  Drawer,
   IconButton,
-  List,
-  ListItem,
-  ListItemText,
   Link as MuiLink,
   Slide,
   Stack,
@@ -23,39 +16,26 @@ import {
   useScrollTrigger,
 } from "@mui/material";
 
+import { signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { BsFillMoonFill, BsSunFill } from "react-icons/bs";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
+import BtnOutlined from "../button/BtnOutlined";
 import BtnPrimary from "../button/BtnPrimary";
+import MobileNavbar from "./MobileNavbar";
+import navLinks from "./navLinks";
+import UserPopOver from "./userPopOver";
 
 interface Props {
   window?: () => Window;
   children: React.ReactElement;
 }
 
-const links = [
-  {
-    name: "Home",
-    href: "/",
-  },
-  {
-    name: "About",
-    href: "/about",
-  },
-  {
-    name: "Services",
-    href: "/services",
-  },
-  {
-    name: "Contact",
-    href: "/contact",
-  },
-];
-
 const NavBar = () => {
   const { themeMode, toggleThemeMode } = useThemeMode();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { data: session } = useSession();
   const router = useRouter();
 
   const isActive = (href: string) => {
@@ -105,6 +85,18 @@ const NavBar = () => {
     };
   }, []);
 
+  // User Menu PopOver
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const handleUserPopOver = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleCloseUserPopOver = () => {
+    setAnchorEl(null);
+  };
+
+  const UserMenuOpen = Boolean(anchorEl);
+  const userPopOverId = UserMenuOpen ? "user-popover" : undefined;
+
   return (
     <>
       <HideOnScroll>
@@ -144,17 +136,7 @@ const NavBar = () => {
                 spacing={4}
                 sx={{ display: { xs: "none", md: "flex" } }}
               >
-                {links?.map((item, i) => (
-                  // <ListItem
-                  //   key={i}
-                  //   sx={{
-                  //     color: isActive(item.href) ? "primary.light" : "white",
-                  //   }}
-                  // >
-                  //   <Link href={item.href}>
-                  //     <ListItemText primary={item.name} />
-                  //   </Link>
-                  // </ListItem>
+                {navLinks?.map((item, i) => (
                   <MuiLink
                     component={Link}
                     underline="none"
@@ -176,35 +158,40 @@ const NavBar = () => {
                 justifyContent="flex-end"
                 spacing={3}
               >
-                {themeMode === "light" ? (
-                  <IconButton
-                    edge="end"
-                    sx={{
-                      color: "white",
-                    }}
-                    aria-label="menu"
-                    onClick={toggleThemeMode}
-                  >
-                    <BsSunFill />
-                  </IconButton>
-                ) : (
-                  <IconButton
-                    edge="end"
-                    sx={{
-                      color: "white",
-                    }}
-                    aria-label="menu"
-                    onClick={toggleThemeMode}
-                  >
-                    <BsFillMoonFill />
-                  </IconButton>
-                )}
-
-                <BtnPrimary
-                  sx={{ px: 4, display: { xs: "none", md: "block" } }}
+                <IconButton
+                  edge="end"
+                  sx={{ color: "white" }}
+                  onClick={toggleThemeMode}
                 >
-                  Login
-                </BtnPrimary>
+                  {themeMode === "light" ? <BsSunFill /> : <BsFillMoonFill />}
+                </IconButton>
+
+                {session?.user ? (
+                  // ----------------- Disabled for PopOver Issue ---------------
+                  // <IconButton
+                  //   onClick={handleUserPopOver}
+                  //   aria-describedby={userPopOverId}
+                  // >
+                  //   <Avatar
+                  //     alt={session?.user?.name}
+                  //     sx={{ width: 40, height: 40 }}
+                  //   />
+                  // </IconButton>
+
+                  <BtnOutlined
+                    sx={{ px: 4, display: { xs: "none", md: "block" } }}
+                    onClick={() => signOut()}
+                  >
+                    LogOut
+                  </BtnOutlined>
+                ) : (
+                  <BtnPrimary
+                    sx={{ px: 4, display: { xs: "none", md: "block" } }}
+                    onClick={() => router.push("/login")}
+                  >
+                    Login
+                  </BtnPrimary>
+                )}
 
                 <IconButton
                   edge="end"
@@ -225,56 +212,15 @@ const NavBar = () => {
       </HideOnScroll>
 
       {/* Mobile Navbar */}
-      <Drawer
-        anchor="right"
-        open={drawerOpen}
-        onClose={toggleDrawer(false)}
-        sx={{
-          backgroundColor:
-            themeMode === "dark"
-              ? "rgba(24, 31, 41, 0.5)"
-              : "rgba(243, 245, 255, 0.5)",
-          backdropFilter: "blur(10px) brightness(0.8)",
-        }}
-      >
-        <Box
-          role="presentation"
-          onClick={toggleDrawer(false)}
-          onKeyDown={toggleDrawer(false)}
-          sx={{
-            width: 300,
-            height: "100vh",
-            bgcolor: "background.primary",
-          }}
-        >
-          <MuiLink
-            component={Link}
-            href="/"
-            sx={{ display: "block", textAlign: "center", mt: 5 }}
-          >
-            <Image src={logoMini} alt="Webserv" width={50} height={30} />
-          </MuiLink>
+      <MobileNavbar drawerOpen={drawerOpen} toggleDrawer={toggleDrawer} />
 
-          <List sx={{ mt: 5 }}>
-            {links?.map((item, i) => (
-              <ListItem
-                key={i}
-                component={Button}
-                sx={{ color: "text.primary" }}
-              >
-                <Link href={item.href} passHref>
-                  <ListItemText primary={item.name} />
-                </Link>
-              </ListItem>
-            ))}
-          </List>
-          <Stack direction="row" justifyContent="center">
-            <BtnPrimary sx={{ px: 4, mx: "auto", width: "95%" }}>
-              Login
-            </BtnPrimary>
-          </Stack>
-        </Box>
-      </Drawer>
+      {/* User Menu PopOver */}
+      <UserPopOver
+        id={userPopOverId}
+        open={UserMenuOpen}
+        anchorEl={anchorEl}
+        onClose={handleCloseUserPopOver}
+      />
     </>
   );
 };

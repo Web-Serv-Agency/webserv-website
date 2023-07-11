@@ -8,5 +8,19 @@ namespace NodeJS {
   }
 }
 
-declare module 'framer-motion'
-declare module "@mui/styles"
+declare module "framer-motion";
+declare module "@mui/styles";
+
+// Declare Next Auth Session
+import NextAuth, { DefaultSession } from "next-auth";
+
+declare module "next-auth" {
+  interface Session extends DefaultSession {
+    accessToken?: string;
+    user?: {
+      _id: string;
+      name: string;
+      email: string;
+    };
+  }
+}
