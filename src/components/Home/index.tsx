@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import { useSession } from "next-auth/react";
 import NavBar from "../navbar";
 import Banner from "./Banner";
 import ChooseUs from "./ChooseUs";
@@ -8,6 +9,7 @@ import Teams from "./Teams";
 import Testimonials from "./Testimonials";
 
 const Home = () => {
+  const { data: session } = useSession();
   return (
     <>
       <Box
@@ -16,7 +18,7 @@ const Home = () => {
           bgcolor: "white",
         }}
       >
-        <NavBar />
+        {/* <NavBar /> */}
         <Banner />
         <ChooseUs />
         <Services />
