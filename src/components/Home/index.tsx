@@ -10,7 +10,6 @@ import Testimonials from "./Testimonials";
 
 const Home = () => {
   const { data: session } = useSession();
-  console.log(session);
   return (
     <>
       <Box
@@ -19,7 +18,7 @@ const Home = () => {
           bgcolor: "white",
         }}
       >
-        <NavBar />
+        {/* <NavBar /> */}
         <Banner />
         <ChooseUs />
         <Services />

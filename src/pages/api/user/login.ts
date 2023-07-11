@@ -1,8 +1,12 @@
 import User from "@/model/User";
-import { connectDB } from "@/utils/db";
+import { connectDB, disconnectDB } from "@/utils/db";
+import { IApiResponse } from "@/utils/interface/commonInterface";
 import { NextApiRequest, NextApiResponse } from "next";
 
-const login = async (req: NextApiRequest, res: NextApiResponse) => {
+const login = async (
+  req: NextApiRequest,
+  res: NextApiResponse<IApiResponse<any>>
+) => {
   await connectDB();
   try {
     const { email, password } = req.body;
@@ -25,6 +29,7 @@ const login = async (req: NextApiRequest, res: NextApiResponse) => {
       .status(200)
       .json({ success: true, message: "Login success", data: user });
   } catch (error: any) {
+    disconnectDB();
     res
       .status(400)
       .json({ success: false, message: error?.message, stack: error?.stack });

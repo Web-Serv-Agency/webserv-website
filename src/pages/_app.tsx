@@ -1,15 +1,22 @@
 import RouteChangeWrapper from "@/components/common/RouteChangeWrapper";
 import { wrapper } from "@/features/app/store";
+import BasicLayout from "@/layouts/BasicLayout";
 import "@/styles/globals.css";
 import ThemeProvider from "@/utils/theme";
 import { AnimatePresence } from "framer-motion";
+import { NextPage } from "next";
 import { SessionProvider } from "next-auth/react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { Toaster } from "react-hot-toast";
 import { Provider } from "react-redux";
 
 const App = ({ Component, ...rest }: AppProps) => {
   const { store, props } = wrapper.useWrappedStore(rest);
+  const getLayout =
+    Component.getLayout ||
+    ((page: NextPage) => <BasicLayout>{page}</BasicLayout>);
+
   return (
     <>
       {/* Default Head */}
@@ -23,13 +30,14 @@ const App = ({ Component, ...rest }: AppProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* Providers */}
+      {/* Providers & Wrappers */}
+      <Toaster position="top-right" />
       <Provider store={store}>
         <SessionProvider session={props.session}>
           <ThemeProvider>
             <AnimatePresence>
               <RouteChangeWrapper>
-                <Component {...props.pageProps} />
+                {getLayout(<Component {...props.pageProps} />)}
               </RouteChangeWrapper>
             </AnimatePresence>
           </ThemeProvider>
