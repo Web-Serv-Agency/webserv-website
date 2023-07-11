@@ -11,11 +11,19 @@ import Head from "next/head";
 import { Toaster } from "react-hot-toast";
 import { Provider } from "react-redux";
 
-const App = ({ Component, ...rest }: AppProps) => {
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: React.ReactElement) => React.ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
+
+const App = ({ Component, ...rest }: AppPropsWithLayout) => {
   const { store, props } = wrapper.useWrappedStore(rest);
   const getLayout =
     Component.getLayout ||
-    ((page: NextPage) => <BasicLayout>{page}</BasicLayout>);
+    ((page: React.ReactNode) => <BasicLayout>{page}</BasicLayout>);
 
   return (
     <>
