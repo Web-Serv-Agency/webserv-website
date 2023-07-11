@@ -1,8 +1,7 @@
 import NavBar from "@/components/navbar";
-import { NextPage } from "next";
 
 type IProps = {
-  children: NextPage;
+  children: React.ReactNode;
 };
 
 const BasicLayout = ({ children }: IProps) => {
